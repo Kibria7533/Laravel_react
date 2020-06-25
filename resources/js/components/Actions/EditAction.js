@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { url } from '../Url';
 const EditAction=(data)=> async dispatch=>{
    
     try {
        
-       const res= await axios.put(`https://kb-rrl.herokuapp.com/api/get/update`,data); 
+       const res= await axios.put(`${url.URL}/api/get/update`,data); 
        
      dispatch({type:"EDIT",data:res.data});
     } catch (error) {

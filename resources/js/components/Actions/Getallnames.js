@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { url } from '../Url';
 const Getallnames=()=> async dispatch=>{
   
    
     try {
-        const res= await axios.get('https://kb-rrl.herokuapp.com/api/get/');
+        const res= await axios.get(`${url.URL}/api/get`);
         dispatch({type:"GET_ALL_NAMES",payload:res.data});
     } catch (error) {
         

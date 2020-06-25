@@ -5,14 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use DB;
+use App\rrlm;
 
 class rrl extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
         $data=DB::table('rrlt')->get();
@@ -20,59 +17,20 @@ class rrl extends Controller
        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
-       $data=DB::table('rrlt')->insert([
-           'name'=>$request->name
-       ]);
-       return $data;
+        $data=new rrlm;
+        $data->name=$request->name;
+        $data->save();
+
+        $last=rrlm::orderBy('created_at', 'desc')->first();
+        return $last;
+   
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
+ 
     public function update(Request $request)
     {
         $data=DB::table('rrlt')->where('id',$request->id)->update([
@@ -81,12 +39,7 @@ class rrl extends Controller
         return $request;
     }
 
-    /**       
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         
