@@ -25,7 +25,7 @@ class Home extends Component {
           <tbody>
             {this.props.data.map((item,index)=> {
               return (<tr key={index}>
-                <th scope="row">{index}</th>
+                <th scope="row">{index+1}</th>
                 <td>{item.name}</td>
                 <td> <button type="submit" className="btn btn-primary" onClick={() => this.props.dispatch(DeleteAction(item.id))}>Delete</button></td>
                 <td> <Link to={`/edit/${item.id}`}><button type="submit" className="btn btn-primary">Edit</button></Link> </td>

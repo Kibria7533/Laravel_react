@@ -4,7 +4,7 @@ const Getallnames=()=> async dispatch=>{
   
    
     try {
-        const res= await axios.get(`${url.URL}/api/get`);
+        const res= await axios.get(`${url.URL}/get`);
         dispatch({type:"GET_ALL_NAMES",payload:res.data});
     } catch (error) {
         

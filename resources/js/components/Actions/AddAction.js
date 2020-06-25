@@ -6,7 +6,7 @@ const AddAction=(data)=> async dispatch=>{
   
     try {
        
-       const res= await axios.post(`${url.URL}/api/get/`,data); 
+       const res= await axios.post(`${url.URL}/get/`,data); 
       console.log(res.data);
         dispatch({type:"ADD",data:res.data});
     } catch (error) {
